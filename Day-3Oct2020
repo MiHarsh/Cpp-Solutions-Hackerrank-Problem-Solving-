@@ -1,0 +1,54 @@
+# Insertion Sort-Part 1
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n,store;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    store=arr[n-1];
+    for(int i=n-2;i>-1;i--){
+        if(arr[i]>=store){
+            arr[i+1]=arr[i];
+            for(int j=0;j<n;j++){
+                cout<<arr[j]<<" ";
+            }
+            cout<<"\n";
+        }
+        else{
+            arr[i+1]=store;
+            store=arr[i];
+        }
+    }
+    for(int k=0;k<n;k++){
+                cout<<arr[k]<<" ";
+            }
+}
+
+##Ice Cream Parlor##
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int t,m,n;
+    cin>>t;
+    for(int i=0;i<t;i++){
+        cin>>m>>n;
+        int arr[n];
+        for(int j=0;j<n;j++){
+            cin>>arr[j];
+        }
+        for(int j=0;j<n;j++){
+            for(int k=j+1;k<n;k++){
+                    if((arr[j]+arr[k])==m){
+                        cout<<j+1<<" "<<k+1<<"\n";
+                }
+            }
+        }
+    }
+}
