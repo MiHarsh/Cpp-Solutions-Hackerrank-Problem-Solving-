@@ -1,0 +1,161 @@
+#Sherlock and Array
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int t,n;
+    cin>>t;
+    for(int i=0;i<t;i++){
+        cin>>n;
+        int arr[n],k=0,flag=0,cum=0,total=0;
+        for(int j=0;j<n;j++){
+            cin>>arr[j];
+            total+=arr[j];
+        }
+        for(int j=0;j<n;j++){
+            if(2*cum==(total-arr[j])){
+                cout<<"YES"<<"\n";
+                flag=1;
+                break;
+            }
+            cum+=arr[j];
+        }
+        if(flag==0){
+            cout<<"NO"<<"\n";
+        }
+    }
+}
+
+#median
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+vector<string> split_string(string);
+
+int main(){
+    int n,i;
+    cin>>n;
+    int a[n];
+    for(i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    sort(a,a+n);
+    if(n%2==0)
+    cout<<a[n/2-1];
+    else
+    cout<<a[n/2];
+  
+}
+
+#QuickSort-Partition1
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int l=0,r=0,s=0,n,temp;
+    cin>>n;
+    int left[n],right[n],arr[n],equal[n];
+    cin>>equal[0];
+    for(int i=1;i<n;i++){
+        cin>>temp;
+        if(temp>equal[0]){
+            right[r]=temp;
+            r++;
+        }
+        if(temp<equal[0]){
+            left[l]=temp;
+            l++;
+            cout<<temp<<" ";
+        }
+        if(temp==equal[0]){
+            equal[s+1]=temp;
+            s++;
+        }
+    }
+    for(int i=0;i<s+1;i++){
+        cout<<equal[i]<<" ";
+    }
+    for(int i=0;i<r;i++){
+        cout<<right[i]<<" ";
+    }
+
+    
+}
+
+#Counting Sort
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n,temp;
+    cin>>n;
+    int arr[n]={0};
+    for(int i=0;i<n;i++){
+        cin>>temp;
+        arr[temp]++;
+    }
+    for(int i=0;i<100;i++){
+        cout<<arr[i]<<" ";
+    }
+}
+
+#Counting Sort-2
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n,temp;
+    cin>>n;
+    int arr[1000000]={0};
+    for(int i=0;i<n;i++){
+        cin>>temp;
+        arr[temp]++;
+    }
+    for(int i=0;i<1000000;i++){
+        for(int j=0;j<arr[i];j++){
+        cout<<i<<" ";
+    }
+    }
+}
+
+#HackerRank in a string
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int t;
+    cin>>t;
+    for(int i=0;i<t;i++){
+        string s;
+        int p=9,flag=0,l;
+        cin>>s;
+        l=s.length();
+        char ack[10]={'h','a','c','k','e','r','r','a','n','k'};
+        for(int j=(l-1);j>-1;j--){
+            if(s[j]==ack[p]){
+                ack[p]=0;
+                p--;
+            }
+        }
+        for(int j=0;j<10;j++){
+            if(ack[j]!=0){
+                flag=1;
+            }
+        }
+        if(flag==0){
+            cout<<"YES"<<"\n";
+        }
+        else {
+            cout<<"NO"<<"\n";
+        }
+
+    }
+}
