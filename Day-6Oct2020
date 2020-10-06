@@ -1,0 +1,197 @@
+# Sherlock And Squares
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int q,a,b;
+    cin>>q;
+    for(int i=0;i<q;i++){
+        cin>>a>>b;
+        float sq1=sqrt(a);
+        int l=sqrt(a),r=sqrt(b),count=0;
+        if((sq1-l)>0){
+            cout<<(r-l)<<"\n";
+        }
+        else{
+            cout<<(r-l+1)<<"\n";
+        }
+    }
+}
+
+#Cut the Sticks
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n,min,count;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    sort(arr,arr+n);
+    min=arr[0];
+    while(true){
+        count=0;
+        for(int i=0;i<n;i++){
+            if(arr[i]!=0){
+            arr[i]-=min;
+            count+=1;
+            }
+        }
+        for(int i=0;i<n;i++){
+            if(arr[i]!=0){
+                min=arr[i];
+                break;
+            }
+        }
+        cout<<count<<"\n";
+        if(arr[n-1]==0){
+            break;
+        }
+
+    }
+}
+
+#Jumping on the clouds
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int n,j;
+    cin>>n;
+    int a[n];
+    for(j=0;j<n;j++)
+        {
+            cin>>a[j];
+        }
+        j=0;
+        int c=0;
+    while(j<n)
+    {
+        if(a[j+1]==1)
+        j=j+2;
+        else if(a[j+1]==0&& a[j+2]==0)
+        j=j+2;
+        else j=j+1;
+
+        c++;
+
+    }
+    cout<<c-1;
+}
+
+#Repeated String
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    char str[100];
+    cin>>str;
+    int len_char=strlen(str);
+    unsigned long long int n,num_a=0;
+    cin>>n;
+    for(int i=0;i<len_char;i++){
+        if(str[i]=='a'){
+            num_a++;
+        }
+    }
+    int rem=n%len_char;
+    num_a*=(n/len_char);
+    for(int i=0;i<rem;i++){
+        if(str[i]=='a'){
+            num_a++;
+        }
+    }
+    cout<<num_a;
+}
+
+#Alternative Characters
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int q;
+    cin>>q;
+    for(int i=0;i<q;i++){
+        char str[100000];
+        cin>>str;
+        int len_str=strlen(str),del=0;
+        char init=str[0];
+        for(int j=1;j<len_str;j++){
+            if(str[j]!=init){
+                init=str[j];
+                }
+            else{
+                del+=1;
+            }
+        }
+        cout<<del<<"\n";
+    }
+}
+
+#Funny String
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int q;
+    cin>>q;
+    for(int i=0;i<q;i++){
+        char s[10000];
+        int num_len;
+        cin>>s;
+        num_len=strlen(s);
+        int ast[num_len],dif[num_len-1],rev[num_len-1];
+        int k=0,temp;
+        for(int j=0;j<num_len;j++){
+            temp=s[j];
+            ast[j]=temp;
+        }
+        for(int j=0;j<num_len-1;j++){
+            dif[j]=abs(ast[j]-ast[j+1]);
+            rev[num_len-2-j]=dif[j];
+        }
+        for(int j=0;j<num_len-2;j++){
+            if(dif[j]!=rev[j]){
+                k=1;
+                break;
+            }
+        }
+        if(k==1){
+            cout<<"Not Funny"<<"\n";
+        }
+        else{
+            cout<<"Funny"<<"\n";
+        }
+
+        
+    }
+}
+
+#CamelCase
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    char str[100000];
+    cin>>str;
+    int l=1,temp,num_len;
+    num_len=strlen(str);
+    for(int i=0;i<num_len;i++){
+        temp=str[i];
+        if(temp<97){
+            l++;
+        }
+    }
+    cout<<l;
+}
