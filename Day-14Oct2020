@@ -1,0 +1,38 @@
+#Save the prisoner
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int t,N,M,S;
+    cin>>t;
+    for(int i=0;i<t;i++){
+    cin >> N >> M >> S;
+       if(!((M+S-1)%N))cout << N << endl;
+        else cout << (M+S-1)%N << endl;
+    }
+}
+
+#Minimum Distance
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n,ar[1000],mn = INT_MAX;
+    bool flag = false;
+    cin >> n;
+    for(int i = 0; i < n; i++)cin >> ar[i];
+    for(int i = 0; i < n; i++){
+        for(int j = i+1; j < n; j++){
+            if(ar[i] == ar[j]){
+                if(abs(i-j) < mn)mn = abs(i-j);
+                flag = true;
+                break;
+            }
+        }
+    }
+    if(!flag)mn = -1;
+    cout << mn << endl;
+    return 0;
+}
