@@ -1,0 +1,113 @@
+# Balanced Brackets:
+
+#include <bits/stdc++.h>
+using namespace std;
+
+string is_balanced(string s){
+    stack<char>stk;
+    for(auto c:s){
+    switch(c){
+        case '(':
+            stk.push(c);
+            break;
+        case '{':
+            stk.push(c);
+            break;
+        case '[':
+            stk.push(c);
+            break;
+        case ')':
+            if(stk.empty() || stk.top()!='(' )
+                    return "NO";
+                stk.pop();
+                break;
+        case '}':
+            if(stk.empty() || stk.top()!='{' )
+                    return "NO";
+                stk.pop();
+                break;
+        case ']':
+            if(stk.empty() || stk.top()!='[' )
+                    return "NO";
+                stk.pop();
+                break;
+        default: break;
+    }
+    }
+    return stk.empty() ? "YES":"NO";
+}
+
+int main(){
+    int t;
+    cin>>t;
+    for(int j=0;j<t;j++){
+    string str;
+    cin>>str;
+    cout<<is_balanced(str)<<"\n";}
+}
+
+#array_ds
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n;cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    for(int i=n-1;i>=0;i--){
+        cout<<arr[i]<<" ";
+    }
+}
+
+#2d array
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int arr[6][6],max=-63,sum;
+    for(int i=0;i<6;i++){
+        for(int j=0;j<6;j++){
+            cin>>arr[i][j];
+        }
+    }
+    for(int i=0;i<4;i++){
+        for(int j=0;j<4;j++){
+            sum=arr[i][j]+arr[i][j+1]+arr[i][j+2]+arr[i+1][j+1]+arr[i+2][j]+arr[i+2][j+1]+arr[i+2][j+2];
+            if (max<sum){
+                max=sum;
+            }
+        }
+    }
+    cout<<max;
+}
+
+#Maximum Element ******
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    stack<int> stk;
+    int N,p,x;cin>>N;
+    for(int i=0;i<N;i++){
+        cin>>p;
+        if(p==1){
+            cin>>x;
+            if(stk.empty())
+              stk.push(x);
+            else{
+            stk.push(max(x,stk.top()));}
+        }
+        else if(p==2){
+            if (!stk.empty())
+            stk.pop();
+        }
+        else{
+            cout<<stk.top()<<"\n";
+        }
+    }
+
+}
