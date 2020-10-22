@@ -111,3 +111,104 @@ int main(){
     }
 
 }
+
+#Left Rotation
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n,d;
+    cin>>n>>d;int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    for(int i=0;i<n;i++){
+        cout<<arr[(i+d)%n]<<" ";
+    }
+
+}
+
+#Closest Numbers
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n,min=10000000;cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    sort(arr,arr+n);
+    for(int i=0;i<n-1;i++){
+        if(abs(arr[i]-arr[i+1])<min){
+            min=abs(arr[i]-arr[i+1]);
+        }
+    }
+    for(int i=0;i<n;i++){
+        if(abs(arr[i]-arr[i+1])==min){
+            cout<<arr[i]<<" "<<arr[i+1]<<" ";
+        }
+    }
+
+}
+
+#Strong Password
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n,f1=0,f2=0,f3=0,f4=0;cin>>n;
+    string str,num,lc,uc,sc;
+    cin>>str;
+    num = "0123456789";
+    lc = "abcdefghijklmnopqrstuvwxyz";
+    uc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    sc = "!@#$%^&*()-+";
+    for(int i=0;i<n;i++){
+        for(int j=0;j<10;j++){
+            if(str[i]==num[j]){
+                f1=1;
+                break;
+            }
+        }
+        for(int j=0;j<26;j++){
+            if(str[i]==lc[j]){
+                f2=1;
+                break;
+            }
+        }
+        for(int j=0;j<26;j++){
+            if(str[i]==uc[j]){
+                f3=1;
+                break;
+            }
+        }
+        for(int j=0;j<12;j++){
+            if(str[i]==sc[j]){
+                f4=1;
+                break;
+            }
+        }
+    }
+    int su=f1+f2+f3+f4;
+    if(su==4 && n>5){
+        cout<<0;
+    }
+    else if(su==4 && n<6){
+        cout<<6-n;
+    }
+    else if (su !=4 && n>5){
+        cout<<4-su;
+    }
+    else{
+        int al=(4-su);
+        if(n+al>5){
+            cout<<al;
+        }
+        else{
+            cout<<6-n;
+        }
+    }
+}
