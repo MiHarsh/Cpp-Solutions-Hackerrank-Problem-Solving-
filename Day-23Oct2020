@@ -1,0 +1,153 @@
+# Minimum absolute error
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n,temp,min=1e9;cin>>n;int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    sort(arr,arr+n);
+    for(int i=1;i<n;i++){
+        temp=abs(arr[i]-arr[i-1]);
+        if(temp<min){
+            min=temp;}
+    }
+    cout<<min;
+}
+
+#Luck Balance
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n,k,a,b,luck=0;cin>>n>>k;
+    vector<int>arr;
+    for(int i=0;i<n;i++){
+        cin>>a>>b;
+        if(b==0){
+            luck+=a;
+        }
+        else{
+            arr.push_back(a);
+        }
+    }
+    sort(arr.begin(),arr.end());
+    for(int i=0;i<arr.size();i++){
+        if(k>=arr.size()){
+            luck+=arr[i];
+        }
+        else{
+        if(i<arr.size()-k){
+        luck-=arr[i];}
+        else{
+            luck+=arr[i];
+        }}
+    }
+    cout<<luck<<"\n";
+}
+
+# Mark And Toys
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n,k,su=0;cin>>n>>k;int price[n];
+    for(int i=0;i<n;i++){
+        cin>>price[i];
+    }
+    sort(price,price+n);
+    int i=0;
+    while(su<k){
+        su+=price[i];
+        i++;
+    }
+    cout<<i-1;
+}
+
+#Priyanka and Toys
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n,co=1;cin>>n;int ar[n];
+    for(int i=0;i<n;i++){
+        cin>>ar[i];
+    }
+    sort(ar,ar+n);
+    int st=ar[0];
+    for(int i=1;i<n;i++){
+        if(ar[i]>st+4){
+            co++;
+            st=ar[i];
+        }
+    }
+    cout<<co;
+}
+
+#Permutig Two Array
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int q;cin>>q;
+    for(int i=0;i<q;i++){
+        int n,k,flag;cin>>n>>k;
+        int A[n],B[n];
+        for(int j=0;j<n;j++){
+            cin>>A[j];
+        }
+        for(int j=0;j<n;j++){
+            cin>>B[j];
+        }
+        sort(A,A+n);
+        sort(B,B+n,greater<int>());
+        flag=1;
+        for(int j=0;j<n;j++){
+            if(A[j]+B[j]<k){
+                flag=0;
+                }}
+        if(flag==1){
+            cout<<"YES"<<"\n";
+        }
+        else{
+            cout<<"NO"<<"\n";
+        }
+    }
+}
+
+#Greedy Florist
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n,k,temp,cost=0;cin>>n>>k;
+    int dost[k]={0};
+    vector<int>v;
+    for(int i=0;i<n;i++){
+        cin>>temp;
+        v.push_back(temp);
+    }
+    int sz=v.size();
+    sort(v.begin(),v.end());
+    while(sz>=k){
+        for(int i=0;i<k;i++){
+            cost+=(dost[i]+1)*v.back();
+            v.pop_back();
+            dost[i]++;
+        }
+        sz=v.size();
+    }
+    for(int i=0;i<sz;i++){
+        cost+=(dost[i]+1)*v.back();
+        v.pop_back();
+        dost[i]++;
+    }
+    cout<<cost;
+}
