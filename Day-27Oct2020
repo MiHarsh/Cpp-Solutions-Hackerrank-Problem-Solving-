@@ -1,0 +1,285 @@
+# ====>Encryption
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    string str;getline(cin,str);
+    int len_str=str.length();
+    char cs[81];
+    int temp,j=0,q=0;
+    for(int i=0;i<len_str;i++){
+        temp=str[i];
+        if(temp!=32){
+            cs[j]=str[i];
+            j++;
+        }
+    }
+    float sq=sqrt(j);
+    temp=sq;
+    int col=(temp+1);
+    if(temp==sq){
+        col=temp;
+    }
+    if(temp*col<j){
+        temp=col;
+    }
+    char fl[temp][col];
+
+    for(int i=0;i<temp;i++){
+        for(int k=0;k<col;k++){
+            if(q!=j){
+            fl[k][i]=cs[q];
+            q++;
+            }
+            else{
+                fl[k][i]='A';
+            }
+        }
+    }
+    for(int i=0;i<col;i++){
+            for(int k=0;k<temp;k++){
+                if(q>=0 && fl[i][k]!='A'){
+                    cout<<fl[i][k];
+                    q--;
+                }
+            }
+            cout<<" ";
+        }
+}
+
+
+# ==== 3D surface Area
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int row,column;cin>>row>>column;
+    int sa=2*row*column,grid[row][column];
+    for(int i=0;i<row;i++){
+        for(int j=0;j<column;j++){
+            cin>>grid[i][j];
+            if(i==0){
+                sa+=grid[i][j];
+            }
+            if(j==0){
+                sa+=grid[i][j];
+            }
+            if(i==(row-1)){
+                sa+=grid[i][j];
+            }
+            if(j==(column-1)){
+                sa+=grid[i][j];
+            }
+        }
+    }
+    for(int i=0;i<row;i++){
+        for(int j=0;j<column;j++){
+            if((i+1)!=row){
+                sa+=abs(grid[i][j]-grid[i+1][j]);
+            }
+            if((j+1)!=column){
+                sa+=abs(grid[i][j]-grid[i][j+1]);
+            }
+        }
+    }
+    cout<<sa<<"\n";
+}
+
+# ====>Gemstone
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n,temp;cin>>n;string str;
+    int f[26]={0},count=0;
+    for(int i=0;i<n;i++){
+        int ftem[26]={0};
+        cin>>str;
+        int len_str=str.length();
+        for(int j=0;j<len_str;j++){
+            temp=str[j];
+            ftem[temp-97]++;     
+        }
+        for(int j=0;j<26;j++){
+            if(ftem[j]>0){
+                f[j]++;
+            }
+        }
+    }
+    for(int i=0;i<26;i++){
+        if(f[i]>=n){
+            count++;
+        }
+    }
+    cout<<count;
+}
+
+# The Love-Letter Mystery
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int q;cin>>q;
+    for(int i=0;i<q;i++){
+        string str;cin>>str;
+        int len_str=str.size(),count=0;
+        for(int j=0;j<(len_str/2);j++){
+                count+= abs((int)str[len_str-1-j]-(int)str[j]);
+            }
+        cout<<count<<"\n";
+    }
+}
+
+# ==== String Construction
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n;cin>>n;
+    for(int i=0;i<n;i++){
+        string str;cin>>str;
+        int len_str=str.size(),a[26]={0},count=0;
+        for(int j=0;j<len_str;j++){
+            a[((int) str[j])-97]=1;
+        }
+        for(int j=0;j<26;j++){
+            if(a[j]==1){
+                count++;
+            }
+        }
+        cout<<count<<"\n";
+    }
+}
+
+# ==== Two Strings
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n;cin>>n;
+    
+    for(int i=0;i<n;i++){
+        string str[2];cin>>str[0]>>str[1];
+        int a1[26]={0},a2[26]={0},flag=0;
+        for(int j=0;j<str[0].size();j++){
+            a1[(int) str[0][j] -97]=1;
+        }
+        for(int j=0;j<str[1].size();j++){
+            a2[(int) str[1][j] -97]=1;
+        }
+        for(int j=0;j<26;j++){
+            if(a1[j]==1 && a2[j]==1){
+                flag=1;
+                break;
+            }
+        }
+        if(flag==1){
+        cout<<"YES"<<"\n";}
+        else{
+            cout<<"NO"<<"\n";
+        }
+    }
+}
+
+# ==== Making Anagrams
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+    string str[2];cin>>str[0]>>str[1];
+    int a1[26]={0},a2[26]={0},count=0;
+    for(int i=0;i<str[0].size();i++){
+        a1[(int) str[0][i] -97 ]++;
+    }
+    for(int i=0;i<str[1].size();i++){
+        a2[(int) str[1][i] -97 ]++;
+    }
+    for(int i=0;i<26;i++){
+        count+=abs(a1[i]-a2[i]);
+    }
+    cout<<count;
+}
+
+# ===== Anagram
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+    int n;cin>>n;
+    for(int i=0;i<n;i++){
+        string str;cin>>str;
+        if(str.size()%2==0){
+            int a1[26]={0},a2[26]={0},count=0;
+            for(int j=0;j<(str.size()/2);j++){
+                a1[(int) str[j] -97 ]++;
+            }
+            for(int j=(str.size()/2);j<str.size();j++){
+                a2[(int) str[j] -97 ]++;
+            }
+            for(int j=0;j<26;j++){
+                count+=abs(a1[j]-a2[j]);
+            }
+            cout<<count/2<<"\n";
+        }
+        else{
+            cout<<-1<<"\n";
+        }
+    }
+    }
+    
+    # ====Lonely Integer
+    
+    #include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n,temp,out;cin>>n;
+    cin>>out;
+    for(int i=1;i<n;i++){
+        cin>>temp;
+        out=out^temp;
+    }
+    cout<<out;
+}
+
+# ==== Maximizing XOR
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int l,r,max=0;
+    cin>>l>>r;
+    for(int i=l;i<r+1;i++){
+        for(int j=i;j<r+1;j++){
+            if((i^j)>max){
+                max=(i^j);
+            }
+        }
+    }
+    cout<<max;
+
+}
+
+# ====Flipping Bits
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n;cin>>n;
+    for(int i=0;i<n;i++){
+        unsigned int m;cin>>m;
+        cout<<(~m)<<"\n";
+    }
+}
