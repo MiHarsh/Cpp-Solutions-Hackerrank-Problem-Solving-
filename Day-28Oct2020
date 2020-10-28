@@ -1,0 +1,197 @@
+# ====XOR Strings
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+string strings_xor(string s, string t) {
+
+    string res = "";
+    for(int i = 0; i < s.size(); i++) {
+        if(s[i] == t[i])
+            res.append("0");
+        else
+            res.append("1");
+    }
+
+    return res;
+}
+
+int main() {
+    string s, t;
+    cin >> s >> t;
+    cout << strings_xor(s, t) << endl;
+    return 0;
+}
+
+# ====Smart Number
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+bool is_smart_number(int num) {
+    int val = (int) sqrt(num);
+    if((val*val) == num)
+        return true;
+    return false;
+}
+
+int main() {
+    
+    int test_cases;
+    cin >> test_cases;
+    int num;
+    for(int i = 0; i < test_cases; i++) {
+        cin >> num;
+        bool ans = is_smart_number(num);
+        if(ans) {
+            cout << "YES" << endl;
+        }
+        else cout << "NO" << endl;
+    }
+    return 0;
+}
+
+# ====Chocalate Feast
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int t;cin>>t;
+    for(int i=0;i<t;i++){
+        int n,c,m,w,al,sum=0;cin>>n>>c>>m;
+        w=(n/c);
+        sum+=w;
+        while(w>=m){
+            al=(w/m);
+            w-=((w/m)*m);
+            sum+=al;
+            w+=al;
+        }
+        cout<<sum<<"\n";
+    }
+}
+
+# Manasa and Stones
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+    int t;cin>>t;
+    for(int i=0;i<t;i++){
+        int n,a,b,j=0;cin>>n>>a>>b;
+        int arr[n],k=n;
+        if(a==b){
+            cout<<(n-1)*a<<" ";
+        }
+        else{
+        while(k>=1){
+            k--;
+            arr[j]=(k*a+j*b);
+            j++;
+        }
+        sort(arr,arr+n);
+        for(int p=0;p<n;p++){
+            cout<<arr[p]<<" ";
+        }
+        }
+        cout<<"\n";
+    }
+}
+
+# ==== Lisa's Workbook
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+    int n,k,temp,count=0,sum=0;cin>>n>>k;
+    vector<int>v;
+    vector<int>v2;
+    int q=1;
+    for(int i=0;i<n;i++){
+        cin>>temp;
+        int alp=1;
+        while(temp>0){
+            if(temp>=k){
+                for(int p=0;p<k;p++){
+                    v.push_back(q);
+                    v2.push_back(alp);
+                    alp++;
+                }
+                temp-=k;
+                q++;
+            }
+            else{
+                for(int p=0;p<temp;p++){
+                    v.push_back(q);
+                    v2.push_back(alp);
+                    alp++;
+                }
+                temp=0;
+                q++;
+            }
+        }
+    }
+    for(int i=0;i<v.size();i++){
+        if(v[i]==v2[i]){
+            count++;
+        }
+    }
+    cout<<count;
+}
+
+# ====Sansa andd XOR
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int t;cin>>t;
+    for(int i=0;i<t;i++){
+        int n;cin>>n;
+        int arr[n];
+        for(int j=0;j<n;j++){
+            cin>>arr[j];
+        }
+        if(n%2==0){
+            cout<<0<<"\n";
+        }
+        else{
+            int sum=arr[0];
+            for(int j=2;j<n;j+=2){
+                sum=(sum^arr[j]);
+            }
+            cout<<sum<<"\n";
+        }
+    }
+}
+
+# ==== Sum vs XOR
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    unsigned long int n;cin>>n;
+    int count=0;
+    while (n) 
+    {   if ((n & 1) == 0){
+            count++;
+        }
+        n=n>>1; 
+    } 
+    cout<< (1L<<count);
+}
+
